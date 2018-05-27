@@ -1,6 +1,6 @@
-# Shifumi-server
+# Shifumi
 
-A very simple shifumi server, docker-friendly
+A very simple shifumi game, docker-friendly
 
 ## Server configuration
 
