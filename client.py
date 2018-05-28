@@ -1,12 +1,22 @@
+#!/usr/bin/python3.6
+
+from argparse import ArgumentParser
 from socket import socket
 from os import getenv
 
-ADDR = getenv("SHIFUMI_ADDRESS", "0.0.0.0")
-PORT = int(getenv("SHIFUMI_PORT", 22451))
+parser = ArgumentParser()
+parser.add_argument("-a", "--addr",
+                    default=getenv("SHIFUMI_ADDRESS", "localhost"),
+                    help="Shifumi server address")
+parser.add_argument("-p", "--port",
+                    type=int,
+                    default=int(getenv("SHIFUMI_PORT", 22451)),
+                    help="Shifumi server port")
+config = parser.parse_args()
 
 def main():
     server = socket()
-    server.connect((ADDR, PORT))
+    server.connect((config.addr, config.port))
     print("Connected, waiting start signal...")
     server.recv(1)
 
