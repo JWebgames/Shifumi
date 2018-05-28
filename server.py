@@ -1,5 +1,10 @@
 from socket import socket
 from os import getenv
+from functools import partial
+from sys import stdout
+
+# Patch
+print = partial(print, flush=True, file=stdout)
 
 ADDR = getenv("SHIFUMI_ADDRESS", "0.0.0.0")
 PORT = int(getenv("SHIFUMI_PORT", 22451))
