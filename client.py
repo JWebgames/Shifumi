@@ -1,5 +1,10 @@
 #!/usr/bin/python3.6
 
+from atexit import register
+@register
+def foo():
+    input("Press ENTER to quit")
+
 from argparse import ArgumentParser
 from socket import socket
 from os import getenv
